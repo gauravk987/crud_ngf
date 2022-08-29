@@ -1,0 +1,55 @@
+<div class="container text-center" style="border: solid black 2px">
+    <div class="row pb-3">
+        <div class="col">
+            Enroll
+        </div>
+        <div class="col">
+            Name
+        </div>
+        <div class="col">
+            Dept
+        </div>
+        <div class="col">
+            edit/delete
+        </div>
+    </div>
+    <div class="row" *ngFor="let values of classReference.udata">
+        <div class="col">
+            <input *ngIf="showBtn === values.enroll; else elseblock1" type="text" value="gaurav" [formControl]="enroll"
+                readonly="readonly">
+            <ng-template #elseblock1>{{values.enroll}}</ng-template>
+
+        </div>
+        <div class="col">
+            <input *ngIf="showBtn === values.enroll; else elseblock2" type="text" value="{{values.name}}"
+                [formControl]="name">
+            <ng-template #elseblock2>{{values.name}}</ng-template>
+
+        </div>
+        <div class="col">
+            <input *ngIf="showBtn === values.enroll; else elseblock3" type="text" value="{{values.dept}}"
+                [formControl]="dept">
+            <ng-template #elseblock3>{{values.dept}}</ng-template>
+
+        </div>
+
+        <div class="col p-2">
+            <button *ngIf="showBtn === values.enroll; else elseblock4" type="button" class="btn btn-primary mx-2 "
+                (click)="updateData()">Save</button>
+            <ng-template #elseblock4>
+
+                <button type="button" class="btn btn-primary mx-2 " (click)="gridEdit(values.enroll,values.name,values.dept)">
+                    Edit </button>
+
+            </ng-template>
+            <button *ngIf="showBtn === values.enroll; else elseblock5" type="button" class="btn btn-primary mx-2"
+                (click)="hideEdit()">Cancel</button>
+            <ng-template #elseblock5>
+                <button type="button" class="btn btn-primary mx-2" (click)="deleteData(values.enroll)">Delete</button>
+            </ng-template>
+        </div>
+    </div>
+    <button *ngIf="!classReference.isShowAddComponent" type="button" class="btn btn-primary"
+        (click)="showAddComponent()">Add</button>
+    <app-add *ngIf="classReference.isShowAddComponent"></app-add>
+</div>

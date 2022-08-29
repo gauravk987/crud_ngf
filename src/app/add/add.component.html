@@ -1,0 +1,24 @@
+<div class="container p-5" >
+  <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="enrollAlert">
+      <div>Enroll is already exists</div>
+     <button type="button" class="btn-close" data-bs-dismiss="alert"  aria-label="Close" (click)="hideEnrollAlert()"></button>
+    </div>
+    <form>
+      <div class="mb-3">
+        <label for="enroll" class="form-label" >Enroll</label>
+        <input type="text" class="form-control" [formControl]="enroll" name="enroll">
+   
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" [formControl]="name">
+      </div>
+      <div class="mb-3">
+        <label for="dept" class="form-label">Dept</label>
+        <input type="text" class="form-control" name="dept" [formControl]="dept">
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addData()">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="cp1.hideAddComponent()">Cancel</button>
+      
+    </form>
+  </div>
